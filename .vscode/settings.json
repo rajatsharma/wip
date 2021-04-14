@@ -3,8 +3,5 @@
   "purescript.addNpmPath": true,
   "[jsonc]": {
     "editor.formatOnSave": true
-  },
-  "[purescript]": {
-    "editor.formatOnSave": true
   }
 }

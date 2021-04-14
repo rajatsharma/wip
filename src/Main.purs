@@ -26,11 +26,8 @@ data Option
 
 option :: String -> Option
 option "license" = License
-
 option "gitignore" = Gitignore
-
 option "readme" = Readme
-
 option _ = None
 
 data Language
@@ -39,18 +36,14 @@ data Language
 
 language :: String -> Effect Language
 language "purs" = pure Purescript
-
 language "purescript" = pure Purescript
-
 language "scala" = pure Scala
-
 language _ = do
   log "Illegal language passed, accepts one of purescript, purs or scala"
   exit 1
 
 getLanguageStr :: Language -> String
 getLanguageStr Purescript = "purescript"
-
 getLanguageStr Scala = "scala"
 
 -- Helpers
