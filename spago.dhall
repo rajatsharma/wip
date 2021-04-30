@@ -7,7 +7,6 @@ You can edit this file as you like.
   [ "common-utils"
   , "prelude"
   , "lists"
-  , "maybe"
   , "node-buffer"
   , "console"
   , "effect"
