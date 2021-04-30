@@ -44,7 +44,7 @@ getLanguage _ = do
   log "Illegal language passed, accepts one of purescript, purs or scala"
   exit 1
 
-instance showOption :: Show Language where
+instance showLanguage :: Show Language where
   show Purescript = "purescript"
   show Scala = "scala"
   show None = ""
