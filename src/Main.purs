@@ -1,17 +1,18 @@
 module Main where
 
 import Prelude
+
+import CommonUtils.Handlebars (compile)
+import CommonUtils.Node.Process (argsList)
 import Data.List ((!!))
 import Data.Maybe (fromMaybe, Maybe(..))
 import Effect (Effect)
 import Effect.Console (log)
-import Node.Args (args)
 import Node.Encoding as Encoding
 import Node.FS.Sync as S
 import Node.Globals (__dirname)
 import Node.Path as Path
 import Node.Process (exit)
-import Text.Handlebars (compile)
 
 -- Constants
 templateDir :: String
@@ -101,6 +102,7 @@ Open Source management utility
 -- Main
 main :: Effect Unit
 main = do
+  args <- argsList
   let
     command = fromMaybe "" $ args !! 0
   let

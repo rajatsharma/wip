@@ -4,10 +4,13 @@ You can edit this file as you like.
 -}
 { name = "wingman"
 , dependencies =
-  [ "console"
+  [ "common-utils"
+  , "prelude"
+  , "lists"
+  , "maybe"
+  , "node-buffer"
+  , "console"
   , "effect"
-  , "handlebars"
-  , "node-args"
   , "node-fs"
   , "node-path"
   , "node-process"
