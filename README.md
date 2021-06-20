@@ -1,6 +1,12 @@
 # wingman
 
-> Open Source management utility
+> Initialise projects
+
+## Installation
+
+```sh
+cargo install --git https://github.com/rajatsharma/wingman
+```
 
 ## Usage
 
