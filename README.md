@@ -4,25 +4,24 @@
 
 ## Usage
 
-- Generate Readme
+- Generate Rust Project
 
 ```sh
-wm readme purs "Name" "Description"
+wingman rust-init rust-project --bin
 ```
 
-- Generate Gitignore
+- Generate Purescript Project
 
 ```sh
-wm gitignore purs
+wingman purs-init purs-project
 ```
 
-- Generate License
+- Generate Nextjs Project
 
 ```sh
-wm license purs
+wingman next-init next-project
 ```
-
 
 ## License
 
-[![GPL-3.0](https://img.shields.io/badge/-GPL3-black?style=flat-square)](/COPYING)
+[![MIT](https://img.shields.io/badge/-MIT-black?style=flat-square)](/LICENSE)

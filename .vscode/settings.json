@@ -1,7 +1,6 @@
 {
-  "purescript.addSpagoSources": true,
-  "purescript.addNpmPath": true,
-  "[jsonc]": {
+  "[rust]": {
     "editor.formatOnSave": true
-  }
+  },
+  "rust-analyzer.checkOnSave.command": "clippy"
 }
