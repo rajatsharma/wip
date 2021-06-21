@@ -28,7 +28,7 @@ fn main() -> Result<()> {
                 "https://github.com/rajatsharma/typereform",
                 project,
             ])
-            .spawn()?;
+            .output()?;
     }
 
     if command == "rust-init" {
@@ -36,11 +36,11 @@ fn main() -> Result<()> {
 
         Command::new("cargo")
             .args(&["init", project, &*args[3]])
-            .spawn()?;
+            .output()?;
         Command::new("mkdir")
             .current_dir(project)
             .arg(".vscode")
-            .spawn()?;
+            .output()?;
 
         let mut settings_file = File::create(format!("./{}/.vscode/settings.json", project))?;
         settings_file.write_all(settings)?;
@@ -55,17 +55,17 @@ fn main() -> Result<()> {
         Command::new("spago")
             .arg("init")
             .current_dir(project)
-            .spawn()?;
+            .output()?;
 
         Command::new("yarn")
             .args(&["init", "-y"])
             .current_dir(project)
-            .spawn()?;
+            .output()?;
 
         Command::new("mkdir")
             .current_dir(project)
             .arg(".vscode")
-            .spawn()?;
+            .output()?;
 
         let mut editorconfig_file =
             File::create(Path::new(&format!("./{}/.editorconfig", project)))?;
