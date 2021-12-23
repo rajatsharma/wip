@@ -5,27 +5,15 @@
 ## Installation
 
 ```sh
-cargo install --git https://github.com/rajatsharma/wingman
+go get github.com/rajatsharma/wingman
 ```
 
 ## Usage
 
-- Generate Rust Project
+- Generate Go Project
 
 ```sh
-wingman rust-init rust-project --bin
-```
-
-- Generate Purescript Project
-
-```sh
-wingman purs-init purs-project
-```
-
-- Generate Nextjs Project
-
-```sh
-wingman next-init next-project
+wingman go rust-project
 ```
 
 ## License
