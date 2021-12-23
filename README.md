@@ -13,7 +13,7 @@ go get github.com/rajatsharma/wingman
 - Generate Go Project
 
 ```sh
-wingman go rust-project
+wingman go go-project
 ```
 
 ## License
