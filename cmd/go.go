@@ -10,15 +10,9 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func check(e error) {
-	if e != nil {
-		panic(e)
-	}
-}
-
 var goCmd = &cobra.Command{
 	Use:   "go",
-	Short: "Create go project",
+	Short: "Create Go project",
 	Run: func(cmd *cobra.Command, args []string) {
 		project := args[0]
 		err := os.Mkdir(project, 0755)
