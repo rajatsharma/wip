@@ -5,8 +5,8 @@ package cmd
 
 import (
 	"os"
-	"os/exec"
 
+	tp "github.com/rajatsharma/tiny-proc"
 	"github.com/spf13/cobra"
 )
 
@@ -21,11 +21,8 @@ var goCmd = &cobra.Command{
 		path, err := os.Getwd()
 		check(err)
 
-		proc := exec.Command("go", "mod", "init", "github.com/rajatsharma/"+project)
-		proc.Dir = path + "/" + project
-		out, err := proc.Output()
-		check(err)
-		println(string(out))
+		cwd := path + "/" + project
+		check(tp.Proc([]string{"go", "mod", "init", "github.com/rajatsharma/" + project}, &cwd))
 	},
 }
 

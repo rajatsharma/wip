@@ -6,8 +6,8 @@ package cmd
 
 import (
 	"os"
-	"os/exec"
 
+	tp "github.com/rajatsharma/tiny-proc"
 	"github.com/spf13/cobra"
 )
 
@@ -17,10 +17,7 @@ var rustCmd = &cobra.Command{
 	Short: "Create Rust project",
 	Run: func(cmd *cobra.Command, args []string) {
 		project := args[0]
-		proc := exec.Command("cargo", "init", project)
-		out, err := proc.Output()
-		check(err)
-		println(string(out))
+		check(tp.Proc([]string{"cargo", "init", project}, nil))
 
 		cwd, err := os.Getwd()
 		check(err)
