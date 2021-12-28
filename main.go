@@ -14,5 +14,6 @@ import (
 var rustEditorconfig []byte
 
 func main() {
+	cmd.SetResources(rustEditorconfig)
 	cmd.Execute()
 }
