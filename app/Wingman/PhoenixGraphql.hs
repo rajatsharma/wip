@@ -9,12 +9,15 @@ import qualified Data.Text.IO as T
 import System.Directory (getCurrentDirectory, setCurrentDirectory)
 import System.Process (callCommand, callProcess)
 import Text.Casing (fromWords, toQuietSnake)
-import Prelude hiding ((<>))
+import Prelude hiding ((<>), (>))
 
-replaceStrInFile :: FilePath -> T.Text -> T.Text -> IO ()
-replaceStrInFile fileName needle replacement = T.readFile fileName >>= \txt -> T.writeFile fileName (T.replace needle replacement txt)
+(~>) :: String -> String -> T.Text -> T.Text
+(~>) a b = T.replace (T.pack a) (T.pack b)
 
-replaceMarker :: T.Text
+replaceStrInFile :: FilePath -> String -> String -> IO ()
+replaceStrInFile fileName needle replacement = T.readFile fileName >>= \txt -> T.writeFile fileName (needle ~> replacement $ txt)
+
+replaceMarker :: String
 replaceMarker = "  defp deps do\n    ["
 
 (<>) :: T.Text -> T.Text -> T.Text
@@ -22,7 +25,7 @@ replaceMarker = "  defp deps do\n    ["
 
 run :: String -> IO ()
 run name = do
-  let setName = T.replace (T.pack "$name$") (T.pack name)
+  let setName = "$name$" ~> name
   print "Welcome to Wingman, I'll transfer this task to mix because it knows better"
   callCommand $ "echo 'y' | mix phx.new " ++ name ++ " --no-html --no-assets --no-gettext --no-mailer"
   print "Welcome again, mix is done, I'll take it from here"
@@ -33,7 +36,7 @@ run name = do
   T.writeFile ".envrc" "use nix"
   callCommand "rm -rf test"
   callCommand $ "rm -rf lib/" ++ name ++ "_web/controllers/"
-  replaceStrInFile "mix.exs" replaceMarker $ replaceMarker <> T.pack "{:absinthe, \"~> 1.6\"},{:absinthe_plug, \"~> 1.5\"},{:absinthe_gen, \"~> 0.2\"},{:credo, \"~> 1.6\", only: [:dev, :test], runtime: false},"
+  replaceStrInFile "mix.exs" replaceMarker $ replaceMarker ++ "{:absinthe, \"~> 1.6\"},{:absinthe_plug, \"~> 1.5\"},{:absinthe_gen, \"~> 0.2\"},{:credo, \"~> 1.6\", only: [:dev, :test], runtime: false},"
   callCommand "mix deps.get"
   callCommand "mix format"
   callCommand "mix credo gen.config"
