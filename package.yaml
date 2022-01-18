@@ -27,7 +27,7 @@ dependencies:
 - text
 
 executables:
-  wingman:
+  wm:
     main:                Main.hs
     source-dirs:         app
     ghc-options:

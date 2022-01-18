@@ -6,6 +6,6 @@
   "license": "MIT",
   "scripts": {
     "install": "stack install",
-    "uninstall": "rm -rf `stack path --local-bin`/wingman"
+    "uninstall": "rm -rf `stack path --local-bin`/wm"
   }
 }
