@@ -5,7 +5,7 @@
 ## Installation
 
 ```sh
-go get github.com/rajatsharma/wingman
+yarn global add https://github.com/rajatsharma/wingman
 ```
 
 ## Usage
