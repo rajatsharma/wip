@@ -1,0 +1,16 @@
+with import <nixpkgs> { };
+
+let
+  snowstorm = import (fetchGit {
+    url = "https://github.com/rajatsharma/snowstorm.git";
+    ref = "master";
+    rev = "7190266a25f8ef5081a5f9eceb3169bc59c4c691";
+  });
+in
+snowstorm.mkPostgresShell {
+  buildInputs = [ ];
+  database = "db_$name$";
+  shellHook = ''
+    echo "Welcome to $name$"
+  '';
+}

@@ -25,6 +25,7 @@ dependencies:
 - process
 - casing
 - text
+- file-embed
 
 executables:
   wm:

@@ -36,6 +36,7 @@ executable wm
       base >=4.7 && <5
     , casing
     , directory
+    , file-embed
     , optparse-applicative
     , process
     , text

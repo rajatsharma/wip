@@ -1,7 +1,9 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE TemplateHaskell #-}
 
 module Wingman.PhoenixGraphql where
 
+import Data.FileEmbed (embedStringFile)
 import qualified Data.Text as T
 import qualified Data.Text.IO as T
 import System.Directory (getCurrentDirectory, setCurrentDirectory)
@@ -20,15 +22,20 @@ replaceMarker = "  defp deps do\n    ["
 
 run :: String -> IO ()
 run name = do
+  let setName = T.replace (T.pack "$name$") (T.pack name)
   print "Welcome to Wingman, I'll transfer this task to mix because it knows better"
-  _ <- callCommand $ "echo 'y' | mix phx.new " ++ name ++ " --no-html --no-assets --no-gettext --no-mailer"
+  callCommand $ "echo 'y' | mix phx.new " ++ name ++ " --no-html --no-assets --no-gettext --no-mailer"
   print "Welcome again, mix is done, I'll take it from here"
+  let dbNix = setName $ T.pack ($(embedStringFile "res/postgres.nix.template") :: String)
   cwd <- getCurrentDirectory
   setCurrentDirectory $ cwd ++ "/" ++ name
+  T.writeFile "shell.nix" dbNix
+  T.writeFile ".envrc" "use nix"
   callCommand "rm -rf test"
   callCommand $ "rm -rf lib/" ++ name ++ "_web/controllers/"
   replaceStrInFile "mix.exs" replaceMarker $ replaceMarker <> T.pack "{:absinthe, \"~> 1.6\"},{:absinthe_plug, \"~> 1.5\"},{:absinthe_gen, \"~> 0.2\"},{:credo, \"~> 1.6\", only: [:dev, :test], runtime: false},"
   callCommand "mix deps.get"
   callCommand "mix format"
   callCommand "mix credo gen.config"
-  pure ()
+  callCommand "direnv allow"
+  callCommand "git init"
