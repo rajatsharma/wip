@@ -8,7 +8,6 @@ copyright:           "2022 Author name here"
 
 extra-source-files:
 - README.md
-- ChangeLog.md
 
 # Metadata used when publishing your package
 # synopsis:            Short description of your package
@@ -24,28 +23,13 @@ dependencies:
 - optparse-applicative
 - directory
 - process
-
-library:
-  source-dirs: src
+- casing
 
 executables:
-  wingman-exe:
+  wingman:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
-    dependencies:
-    - wingman
-
-tests:
-  wingman-test:
-    main:                Spec.hs
-    source-dirs:         test
-    ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
-    dependencies:
-    - wingman

@@ -22,6 +22,12 @@ wingman go go-project
 wingman rust rust-project
 ```
 
+- Generate Phoenix Graphql Project
+
+```sh
+wingman phoenix-graphql phoenix-project
+```
+
 ## License
 
 [![MIT](https://img.shields.io/badge/-MIT-black?style=flat-square)](/LICENSE)

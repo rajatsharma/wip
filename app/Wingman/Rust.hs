@@ -3,10 +3,8 @@
 module Wingman.Rust where
 
 import Data.String (IsString (fromString))
-import System.Process (createProcess, proc)
+import System.Process (callProcess)
 
 run :: String -> IO ()
 run name = do
-  let process = proc "cargo" ["init", fromString name]
-  _ <- createProcess process
-  pure ()
+  callProcess "cargo" ["init", fromString name]
