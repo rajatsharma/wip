@@ -24,6 +24,7 @@ dependencies:
 - directory
 - process
 - casing
+- text
 
 executables:
   wingman:
