@@ -30,4 +30,4 @@ wingman phoenix-graphql phoenix-project
 
 ## License
 
-[![MIT](https://img.shields.io/badge/-MIT-black?style=flat-square)](/LICENSE)
+[![BSD 3-Clause](https://img.shields.io/badge/-BSD3-black?style=flat-square)](/LICENSE)
