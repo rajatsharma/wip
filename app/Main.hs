@@ -5,29 +5,29 @@ module Main where
 import Data.Semigroup ((<>))
 import Options.Applicative
 import System.Environment
-import qualified Wingman.Go as Go
-import qualified Wingman.PhoenixGraphql as PhoenixGraphql
-import qualified Wingman.Rust as Rust
+import qualified Wip.Go as Go
+import qualified Wip.PhoenixGraphql as PhoenixGraphql
+import qualified Wip.Rust as Rust
 
-data Wingman = Go String | Rust String | PhoenixGraphql String
+data Wip = Go String | Rust String | PhoenixGraphql String
 
-createGo :: Parser Wingman
+createGo :: Parser Wip
 createGo = Go <$> argument str idm
 
-createRust :: Parser Wingman
+createRust :: Parser Wip
 createRust = Rust <$> argument str idm
 
-createPhoenixGraphql :: Parser Wingman
+createPhoenixGraphql :: Parser Wip
 createPhoenixGraphql = PhoenixGraphql <$> argument str idm
 
-wingmanParser :: Parser Wingman
-wingmanParser =
+wipParser :: Parser Wip
+wipParser =
   subparser $
     command "go" (info createGo $ progDesc "Generate Go project")
       <> command "rust" (info createRust $ progDesc "Generate Rust project")
       <> command "phoenix-graphql" (info createPhoenixGraphql $ progDesc "Generate Phoenix Graphql project")
 
-runner :: Wingman -> IO ()
+runner :: Wip -> IO ()
 runner (Go name) = Go.run name
 runner (Rust name) = Rust.run name
 runner (PhoenixGraphql name) = PhoenixGraphql.run name
@@ -36,10 +36,10 @@ shell :: IO ()
 shell = runner =<< execParser opts
   where
     opts =
-      info (wingmanParser <**> helper) $
+      info (wipParser <**> helper) $
         fullDesc
           <> progDesc "Enter Command to run, see available commands for command descriptions."
-          <> header "Wingman - Initialise projects"
+          <> header "WIP: Initialises Projects"
 
 main :: IO ()
 main = shell

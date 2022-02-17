@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Wingman.Rust where
+module Wip.Rust where
 
 import Data.String (IsString (fromString))
 import System.Process (callProcess)

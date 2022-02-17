@@ -1,17 +1,17 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.34.5.
+-- This file has been generated from package.yaml by hpack version 0.34.6.
 --
 -- see: https://github.com/sol/hpack
 
-name:           wingman
+name:           wip
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/githubuser/wingman#readme>
-homepage:       https://github.com/githubuser/wingman#readme
-bug-reports:    https://github.com/githubuser/wingman/issues
-author:         Author name here
+description:    Please see the README on GitHub at <https://github.com/rajatsharma/wingman#readme>
+homepage:       https://github.com/rajatsharma/wip#readme
+bug-reports:    https://github.com/rajatsharma/wip/issues
+author:         Rajat Sharma
 maintainer:     example@example.com
-copyright:      2022 Author name here
+copyright:      2022 Rajat Sharma
 license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
@@ -20,15 +20,15 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/githubuser/wingman
+  location: https://github.com/rajatsharma/wip
 
-executable wm
+executable wip
   main-is: Main.hs
   other-modules:
-      Wingman.Go
-      Wingman.PhoenixGraphql
-      Wingman.Rust
-      Paths_wingman
+      Wip.Go
+      Wip.PhoenixGraphql
+      Wip.Rust
+      Paths_wip
   hs-source-dirs:
       app
   ghc-options: -threaded -rtsopts -with-rtsopts=-N

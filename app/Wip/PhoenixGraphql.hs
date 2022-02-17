@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TemplateHaskell #-}
 
-module Wingman.PhoenixGraphql where
+module Wip.PhoenixGraphql where
 
 import Data.FileEmbed (embedStringFile)
 import qualified Data.Text as T

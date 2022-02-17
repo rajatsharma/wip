@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Wingman.Go where
+module Wip.Go where
 
 import Data.String (IsString (fromString))
 import System.Directory (getCurrentDirectory)

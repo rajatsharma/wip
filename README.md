@@ -1,31 +1,25 @@
-# wingman
+# wip 🚧
 
-> Initialise projects
-
-## Installation
-
-```sh
-yarn global add https://github.com/rajatsharma/wingman
-```
+> WIP: Initialises Projects
 
 ## Usage
 
 - Generate Go Project
 
 ```sh
-wingman go go-project
+wip go go-project
 ```
 
 - Generate Rust Project
 
 ```sh
-wingman rust rust-project
+wip rust rust-project
 ```
 
 - Generate Phoenix Graphql Project
 
 ```sh
-wingman phoenix-graphql phoenix-project
+wip phoenix-graphql phoenix-project
 ```
 
 ## License
