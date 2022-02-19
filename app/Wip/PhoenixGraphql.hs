@@ -7,7 +7,7 @@ import Data.FileEmbed (embedStringFile)
 import qualified Data.Text as T
 import qualified Data.Text.IO as T
 import System.Directory (getCurrentDirectory, setCurrentDirectory)
-import System.Process (callCommand, callProcess)
+import System.Process (callCommand)
 import Text.Casing (fromWords, toQuietSnake)
 import Prelude hiding ((<>), (>))
 

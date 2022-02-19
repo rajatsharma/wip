@@ -26,6 +26,7 @@ executable wip
   main-is: Main.hs
   other-modules:
       Wip.Go
+      Wip.Haskell
       Wip.PhoenixGraphql
       Wip.Rust
       Paths_wip
@@ -39,5 +40,6 @@ executable wip
     , file-embed
     , optparse-applicative
     , process
+    , soothsayer
     , text
   default-language: Haskell2010

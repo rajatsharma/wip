@@ -26,6 +26,7 @@ dependencies:
 - casing
 - text
 - file-embed
+- soothsayer
 
 executables:
   wip:
