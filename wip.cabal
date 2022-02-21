@@ -27,7 +27,6 @@ executable wip
   other-modules:
       Wip.Common
       Wip.Go
-      Wip.Haskell
       Wip.PhoenixGraphql
       Wip.Rust
       Paths_wip
@@ -41,6 +40,5 @@ executable wip
     , file-embed
     , optparse-applicative
     , process
-    , soothsayer
     , text
   default-language: Haskell2010
