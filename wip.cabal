@@ -25,6 +25,7 @@ source-repository head
 executable wip
   main-is: Main.hs
   other-modules:
+      Wip.Common
       Wip.Go
       Wip.Haskell
       Wip.PhoenixGraphql

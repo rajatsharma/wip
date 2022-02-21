@@ -9,13 +9,8 @@ import qualified Data.Text.IO as T
 import System.Directory (getCurrentDirectory, setCurrentDirectory)
 import System.Process (callCommand)
 import Text.Casing (fromWords, toQuietSnake)
+import Wip.Common (replaceStrInFile, (~>))
 import Prelude hiding ((<>), (>))
-
-(~>) :: String -> String -> T.Text -> T.Text
-(~>) a b = T.replace (T.pack a) (T.pack b)
-
-replaceStrInFile :: FilePath -> String -> String -> IO ()
-replaceStrInFile fileName needle replacement = T.readFile fileName >>= \txt -> T.writeFile fileName (needle ~> replacement $ txt)
 
 replaceMarker :: String
 replaceMarker = "  defp deps do\n    ["
