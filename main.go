@@ -70,12 +70,16 @@ func main() {
 
 	project := os.Args[2]
 	projectPath := path.Join(cwd, project)
-	if err = os.MkdirAll(projectPath, os.ModePerm); err != nil {
-		log.Fatalf("Unable to create dir %s", projectPath)
-	}
+	projectName := path.Base(projectPath)
 
-	if err := os.Chdir(projectPath); err != nil {
-		log.Fatalf("Unable to change dir to %s", projectPath)
+	if project != "." {
+		if err = os.MkdirAll(projectPath, os.ModePerm); err != nil {
+			log.Fatalf("Unable to create dir %s", projectPath)
+		}
+
+		if err := os.Chdir(projectPath); err != nil {
+			log.Fatalf("Unable to change dir to %s", projectPath)
+		}
 	}
 
 	if parsedLanguage == Cpp {
@@ -102,7 +106,7 @@ func main() {
 	}
 
 	if parsedLanguage == Go {
-		proc(fmt.Sprintf("go mod init github.com/rajatsharma/%s", project))
+		proc(fmt.Sprintf("go mod init github.com/rajatsharma/%s", projectName))
 		mainFile, err := os.Create("main.go")
 		if err != nil {
 			log.Fatalln("Unable to create file main.go")
