@@ -12,18 +12,24 @@ import (
 type Language int
 
 const (
-	Rust Language = iota
+	Cpp Language = iota
 	Typescript
 	Go
+	Haskell
+	Scala
 )
 
 var (
 	languageMap = map[string]Language{
-		"rust":       Rust,
-		"rs":         Rust,
+		"cpp":        Cpp,
+		"c++":        Cpp,
 		"typescript": Typescript,
 		"ts":         Typescript,
 		"go":         Go,
+		"haskell":    Haskell,
+		"hs":         Haskell,
+		"scala":      Scala,
+		"sc":         Scala,
 	}
 )
 
@@ -72,14 +78,27 @@ func main() {
 		log.Fatalf("Unable to change dir to %s", projectPath)
 	}
 
-	if parsedLanguage == Rust {
-		proc("cargo init . --bin")
-		os.Exit(0)
+	if parsedLanguage == Cpp {
+		mainFile, err := os.Create("main.cpp")
+		if err != nil {
+			log.Fatalln("Unable to create file main.cpp")
+		}
+
+		file := "#include <iostream>\n" +
+			"using namespace std;\n" +
+			"\n" +
+			"int main(int argc, char** argv) { return 0; }" +
+			"\n"
+
+		if _, err := mainFile.WriteString(file); err != nil {
+			log.Fatalln("Unable to write to file main.cpp")
+		}
+		return
 	}
 
 	if parsedLanguage == Typescript {
 		proc("git clone git@github.com:rajatsharma/project-mu2.git .")
-		os.Exit(0)
+		return
 	}
 
 	if parsedLanguage == Go {
@@ -89,13 +108,15 @@ func main() {
 			log.Fatalln("Unable to create file main.go")
 		}
 
-		if _, err := mainFile.WriteString(`package main
-func main() {
-	println("Hello")
-}`); err != nil {
+		file := "package main\n" +
+			"func main() {\n" +
+			"\tprintln(\"Hello\")\n" +
+			"}"
+
+		if _, err := mainFile.WriteString(file); err != nil {
 			log.Fatalln("Unable to create file main.go")
 		}
 
-		os.Exit(0)
+		return
 	}
 }
